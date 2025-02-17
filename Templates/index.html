@@ -16,7 +16,15 @@
     <ul>
         <!-- Recorre la lista de tareas y las muestra en la página -->
         {% for task in tasks %}
-        <li>{{ task }} <a href="/delete/{{ loop.index0 }}">Eliminar</a></li>
+        <li class="{% if task.completed %}completed{% endif %}">
+            <!-- Aquí se muestra el nombre de la tarea -->
+            {{ task.name }}
+            <!-- Mostrar enlace para marcar como completada si no está completada -->
+            {% if not task.completed %}
+                <a href="/complete/{{ loop.index0 }}">Completar</a>
+            {% endif %}
+            <a href="/delete/{{ loop.index0 }}">Eliminar</a>
+        </li>
         {% endfor %}
     </ul>
 </body>

@@ -15,8 +15,16 @@ def add():
     # Obtiene la tarea del formulario
     task = request.form.get('task')
     if task:
-        # Agrega la tarea a la lista de tareas si no está vacía
-        tasks.append(task)
+        # Agrega un diccionario de tarea a la lista de tareas
+        tasks.append({'name': task, 'completed': False})
+    # Redirige a la página de inicio
+    return redirect(url_for('index'))
+
+@app.route('/complete/<int:task_id>')
+def complete(task_id):
+    # Marca la tarea como completada si el id es válido
+    if 0 <= task_id < len(tasks):
+        tasks[task_id]['completed'] = True
     # Redirige a la página de inicio
     return redirect(url_for('index'))
 

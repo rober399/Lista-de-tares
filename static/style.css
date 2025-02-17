@@ -39,3 +39,8 @@ li {
     justify-content: space-between;
     padding: 5px 0;
 }
+
+/* Estilo para las tareas completadas */
+.completed {
+    text-decoration: line-through;
+}
