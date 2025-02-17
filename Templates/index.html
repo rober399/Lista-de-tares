@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+    <!-- Enlaza el archivo CSS para los estilos -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <!-- Formulario para agregar una nueva tarea -->
+    <form action="/add" method="post">
+        <input type="text" name="task" placeholder="Nueva tarea">
+        <button type="submit">Agregar</button>
+    </form>
+    <!-- Lista de tareas -->
+    <ul>
+        <!-- Recorre la lista de tareas y las muestra en la página -->
+        {% for task in tasks %}
+        <li>{{ task }} <a href="/delete/{{ loop.index0 }}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
